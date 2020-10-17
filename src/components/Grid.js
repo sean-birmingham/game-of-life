@@ -2,7 +2,7 @@ import React from 'react';
 import Box from './Box';
 
 const Grid = (props) => {
-  const width = props.cols * 14;
+  const width = props.cols * 16;
   let rowsArray = [];
 
   let boxClass = '';
@@ -19,7 +19,11 @@ const Grid = (props) => {
     }
   }
 
-  return <div className='grid' style={{ width: width }}></div>;
+  return (
+    <div className='grid' style={{ width: width }}>
+      {rowsArray}
+    </div>
+  );
 };
 
 export default Grid;
