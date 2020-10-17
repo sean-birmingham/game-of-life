@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from './Grid';
 
 const Game = () => {
@@ -22,6 +22,23 @@ const Game = () => {
     gridClone[row][col] = !gridClone[row][col];
     setFullGrid(gridClone);
   };
+
+  const seed = () => {
+    let gridClone = arrayClone(fullGrid);
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        if (Math.floor(Math.random() * 4) === 1) {
+          gridClone[i][j] = true;
+        }
+      }
+    }
+
+    setFullGrid(gridClone);
+  };
+
+  useEffect(() => {
+    seed();
+  }, []);
 
   return (
     <div>
