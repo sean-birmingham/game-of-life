@@ -2,7 +2,7 @@ import React from 'react';
 
 const Box = (props) => {
   const selectBox = () => {
-    props.selectBox(props.row, props.cols);
+    props.selectBox(props.row, props.col);
   };
 
   return (
