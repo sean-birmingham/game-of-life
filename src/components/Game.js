@@ -39,14 +39,32 @@ class Game extends Component {
     });
   };
 
+  pause = () => {
+    clearInterval(this.intervalID);
+    this.setState({ gameRunning: false });
+  };
+
   playBtn = () => {
     if (this.state.gameRunning === false) {
       this.intervalID = setInterval(this.play, this.speed);
       this.setState({ gameRunning: true });
     } else {
-      clearInterval(this.intervalID);
-      this.setState({ gameRunning: false });
+      this.pause();
     }
+  };
+
+  clear = () => {
+    let grid = Array(this.rows)
+      .fill()
+      .map(() => Array(this.cols).fill(false));
+
+    this.pause();
+
+    this.setState({
+      gameRunning: false,
+      fullGrid: grid,
+      generation: 0
+    });
   };
 
   play = () => {
@@ -82,7 +100,7 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <Controls playBtn={this.playBtn} seed={this.seed} />
+        <Controls playBtn={this.playBtn} seed={this.seed} clear={this.clear} />
         <Grid
           fullGrid={this.state.fullGrid}
           rows={this.rows}
