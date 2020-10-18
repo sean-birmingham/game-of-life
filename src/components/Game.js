@@ -44,14 +44,9 @@ class Game extends Component {
       this.intervalID = setInterval(this.play, this.speed);
       this.setState({ gameRunning: true });
     } else {
-      clearInterval(this.intervalId);
+      clearInterval(this.intervalID);
       this.setState({ gameRunning: false });
     }
-  };
-
-  pauseBtn = () => {
-    clearInterval(this.intervalID);
-    this.setState({ gameRunning: false });
   };
 
   play = () => {
@@ -87,11 +82,7 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <Controls
-          playBtn={this.playBtn}
-          pauseBtn={this.pauseBtn}
-          seed={this.seed}
-        />
+        <Controls playBtn={this.playBtn} seed={this.seed} />
         <Grid
           fullGrid={this.state.fullGrid}
           rows={this.rows}
