@@ -26,16 +26,16 @@ class Game extends Component {
   };
 
   seed = () => {
-    let gridCopy = arrayClone(this.state.fullGrid);
+    let grideClone = arrayClone(this.state.fullGrid);
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
         if (Math.floor(Math.random() * 4) === 1) {
-          gridCopy[i][j] = true;
+          grideClone[i][j] = true;
         }
       }
     }
     this.setState({
-      fullGrid: gridCopy
+      fullGrid: grideClone
     });
   };
 
